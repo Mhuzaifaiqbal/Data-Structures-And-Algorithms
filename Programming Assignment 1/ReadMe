@@ -1,1 +1,32 @@
+Properly Read the Manual, All instructions have been provided.
+Run via the commands given at the end of the manual. Dont copy paste the commands because it missess the underscores. 
 
+
+Keep the Layout As the following:
+┌─────────────────────────────────────────────────────────────┐
+│ File List                                                   │
+├───────────────────┬───────────────────┬─────────────────────┤
+│ Name              │ Type              │ Size                │
+├───────────────────┼───────────────────┼─────────────────────┤
+│ include           │ File folder       │                     │
+├───────────────────┼───────────────────┼─────────────────────┤
+│ src               │ File folder       │                     │
+├───────────────────┼───────────────────┼─────────────────────┤
+│ tests             │ File folder       │                     │
+├───────────────────┼───────────────────┼─────────────────────┤
+│ .DS_Store         │ DS_STORE File     │ 7 KB                │
+├───────────────────┼───────────────────┼─────────────────────┤
+│ a.exe             │ Application       │ 254 KB              │
+├───────────────────┼───────────────────┼─────────────────────┤
+│ PA1_DS.pdf        │ WPS PDF Document  │ 988 KB              │
+├───────────────────┼───────────────────┼─────────────────────┤
+│ pa1_umi.pdf       │ WPS PDF Document  │ 24 KB               │
+├───────────────────┼───────────────────┼─────────────────────┤
+│ run_integration_tests.exe      │ Application │ 254 KB       │
+├───────────────────┼───────────────────┼─────────────────────┤
+│ run_integration_tests_combined.exe │ Application │ 289 KB   │
+├───────────────────┼───────────────────┼─────────────────────┤
+│ run_performance_tests.exe     │ Application   │ 264 KB      │
+├───────────────────┼───────────────────┼─────────────────────┤
+│ run_unit_tests.exe            │ Application   │ 302 KB      │
+└───────────────────┴───────────────────┴─────────────────────┘
