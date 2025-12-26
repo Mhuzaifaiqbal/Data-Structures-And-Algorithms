@@ -1,0 +1,175 @@
+
+
+## **1. Encapsulation**
+
+**Definition:** Keeping the internal state of an object private and exposing only what’s necessary.
+
+In JS, we can use **private fields (`#`)** or closures.
+
+**Example:**
+
+```js
+class BankAccount {
+    #balance; // private field
+
+    constructor(initialBalance) {
+        this.#balance = initialBalance;
+    }
+
+    deposit(amount) {
+        if(amount > 0) this.#balance += amount;
+    }
+
+    withdraw(amount) {
+        if(amount <= this.#balance) this.#balance -= amount;
+        else console.log("Insufficient funds");
+    }
+
+    getBalance() {
+        return this.#balance;
+    }
+}
+
+const account = new BankAccount(100);
+account.deposit(50);
+console.log(account.getBalance()); // 150
+console.log(account.#balance); // Error! private
+```
+
+✅ **Takeaway:**
+Encapsulation prevents **direct manipulation** of internal data (`#balance`) and forces controlled access via methods.
+
+---
+
+## **2. Inheritance**
+
+**Definition:** A class can inherit properties and methods from another class.
+
+**Example:**
+
+```js
+class Vehicle {
+    constructor(brand) {
+        this.brand = brand;
+    }
+    start() {
+        console.log(`${this.brand} is starting`);
+    }
+}
+
+class Car extends Vehicle {
+    constructor(brand, model) {
+        super(brand); // call parent constructor
+        this.model = model;
+    }
+    honk() {
+        console.log(`${this.brand} ${this.model} is honking!`);
+    }
+}
+
+const myCar = new Car("Toyota", "Corolla");
+myCar.start(); // Inherited
+myCar.honk();  // Own method
+```
+
+✅ **Takeaway:**
+`Car` inherits from `Vehicle`. It can **reuse methods** and **add new ones**.
+
+---
+
+## **3. Polymorphism**
+
+**Definition:** Objects of different types can be accessed through the same interface; the behavior depends on the object type.
+
+In JS, this is often done via **method overriding**.
+
+**Example:**
+
+```js
+class Animal {
+    speak() {
+        console.log("Animal speaks");
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    speak() {
+        console.log("Cat meows");
+    }
+}
+
+let animals = [new Dog(), new Cat()];
+
+animals.forEach(a => a.speak());
+// Output:
+// Dog barks
+// Cat meows
+```
+
+✅ **Takeaway:**
+`animals[i].speak()` behaves differently depending on the actual object — **polymorphism**.
+
+---
+
+## **4. Abstraction**
+
+**Definition:** Hiding implementation details and exposing only the essential interface.
+
+In JS, we don’t have formal `abstract` classes, but we **simulate them**:
+
+**Example:**
+
+```js
+class Shape {
+    area() {
+        throw new Error("Method 'area()' must be implemented.");
+    }
+}
+
+class Rectangle extends Shape {
+    constructor(width, height) {
+        super();
+        this.width = width;
+        this.height = height;
+    }
+    area() {
+        return this.width * this.height;
+    }
+}
+
+class Circle extends Shape {
+    constructor(radius) {
+        super();
+        this.radius = radius;
+    }
+    area() {
+        return Math.PI * this.radius ** 2;
+    }
+}
+
+let shapes = [new Rectangle(4,5), new Circle(3)];
+shapes.forEach(s => console.log(s.area()));
+```
+
+✅ **Takeaway:**
+`Shape` defines an **abstract interface (`area`)**, but child classes provide the **implementation**. Users don’t need to know how it’s computed.
+
+---
+
+### **Summary Table**
+
+| Concept           | JS Example                  | Key Idea                                          |
+| ----------------- | --------------------------- | ------------------------------------------------- |
+| **Encapsulation** | `#balance` in `BankAccount` | Hide internal state, provide getters/setters      |
+| **Inheritance**   | `Car extends Vehicle`       | Reuse parent class methods, add/override new ones |
+| **Polymorphism**  | `Dog/Cat speak()`           | Same interface, different behavior                |
+| **Abstraction**   | `Shape` class with `area()` | Hide implementation, define only interface        |
+
+---
+
